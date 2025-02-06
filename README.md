@@ -2,7 +2,7 @@
 
 <div align="center" style="padding-top: 20px">
   <h1 align="center">shadcn/ui cookies</h1>
-  <p align="center">Sleek and flexible cookie consent solution for the web, designed with shadcn/ui.</p>
+  <p align="center">Sleek and flexible cookie consent component, designed with shadcn/ui.</p>
 </div>
 
 ## Installation
