@@ -18,7 +18,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <Button variant={"outline"}>
-              <Link href="https://github.com/shadcn/ui" className="flex items-center gap-2">
+              <Link href="https://github.com/kaizenics/shadcn-cookies" className="flex items-center gap-2">
                 <GithubIcon className="w-4 h-4" />
                 Star on GitHub
               </Link>
