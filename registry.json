@@ -1,0 +1,22 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry.json",
+    "name": "shadcn/ui cookies",
+    "homepage": "https://shadcn-cookies.vercel.app",
+    "items": [
+      {
+        "name": "cookie-consent",
+        "version": "0.2.2",
+        "type": "registry:block",
+        "title": "Cookie Consent",
+        "description": "A cookie consent component.",
+        "files": [
+          {
+            "path": "registry/cookie-consent/cookie-consent.tsx",
+            "type": "registry:component"
+          }
+
+        ]
+      }
+    ]
+  }
+  

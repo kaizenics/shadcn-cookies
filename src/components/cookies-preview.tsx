@@ -119,25 +119,25 @@ export default function Page() {
 
               <TabsContent value="code">
                 <div className="relative">
-                  <pre className="p-4 rounded-lg bg-muted overflow-x-auto">
+                  <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
                     <code
-                      className="text-sm font-mono language-tsx text-foreground"
+                      className="font-mono language-tsx text-foreground block w-full"
                       data-language="tsx"
                     >
-                      <span className="text-muted-foreground">
+                      <span className="text-muted-foreground whitespace-pre-wrap break-words">
                         {codeSnippet1}
                       </span>
                     </code>
                   </pre>
                   <Button
-                    variant="ghost"
+                    variant="ghost" 
                     size="sm"
-                    className="absolute top-4 right-4"
+                    className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
                     onClick={() => {
                       navigator.clipboard.writeText(codeSnippet1);
                     }}
                   >
-                    <CopyIcon className="h-4 w-4" />
+                    <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
                   </Button>
                 </div>
               </TabsContent>
@@ -200,28 +200,28 @@ export default function Page() {
                 </TabsContent>
 
                 <TabsContent value="code">
-                  <div className="relative">
-                    <pre className="p-4 rounded-lg bg-muted overflow-x-auto">
-                      <code
-                        className="text-sm font-mono language-tsx text-foreground"
-                        data-language="tsx"
-                      >
-                        <span className="text-muted-foreground">
-                          {codeSnippet2}
-                        </span>
-                      </code>
-                    </pre>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="absolute top-4 right-4"
-                      onClick={() => {
-                        navigator.clipboard.writeText(codeSnippet2);
-                      }}
+                <div className="relative">
+                  <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
+                    <code
+                      className="font-mono language-tsx text-foreground block w-full"
+                      data-language="tsx"
                     >
-                      <CopyIcon className="h-4 w-4" />
-                    </Button>
-                  </div>
+                      <span className="text-muted-foreground whitespace-pre-wrap break-words">
+                        {codeSnippet2}
+                      </span>
+                    </code>
+                  </pre>
+                  <Button
+                    variant="ghost" 
+                    size="sm"
+                    className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
+                    onClick={() => {
+                      navigator.clipboard.writeText(codeSnippet2);
+                    }}
+                  >
+                    <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
+                  </Button>
+                </div>
                 </TabsContent>
               </Tabs>
             </div>
@@ -284,29 +284,28 @@ export default function Page() {
                 </TabsContent>
 
                 <TabsContent value="code">
-                  <div className="relative">
-                    <pre className="p-4 rounded-lg bg-muted overflow-x-auto">
-                      <code
-                        className="text-sm font-mono language-tsx text-foreground"
-                        data-language="tsx"
-                      >
-                        <span className="text-muted-foreground">
-                          {codeSnippet3}
-                        </span>
-                      </code>
-                    </pre>
-
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="absolute top-4 right-4"
-                      onClick={() => {
-                        navigator.clipboard.writeText(codeSnippet3);
-                      }}
+                <div className="relative">
+                  <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
+                    <code
+                      className="font-mono language-tsx text-foreground block w-full"
+                      data-language="tsx"
                     >
-                      <CopyIcon className="h-4 w-4" />
-                    </Button>
-                  </div>
+                      <span className="text-muted-foreground whitespace-pre-wrap break-words">
+                        {codeSnippet3}
+                      </span>
+                    </code>
+                  </pre>
+                  <Button
+                    variant="ghost" 
+                    size="sm"
+                    className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
+                    onClick={() => {
+                      navigator.clipboard.writeText(codeSnippet3);
+                    }}
+                  >
+                    <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
+                  </Button>
+                </div>
                 </TabsContent>
               </Tabs>
             </div>
