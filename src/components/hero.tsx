@@ -15,7 +15,7 @@ export function Hero() {
             </h1>
 
             <p className="font-sans text-center text-lg">
-              Sleek and flexible cookie consent solution for the web, designed
+              Sleek and flexible cookie consent component, designed
               with shadcn/ui
             </p>
           </div>
