@@ -10,7 +10,7 @@ export function Hero() {
       <Container variant={"fullMobileConstrainedPadded"} className="border-x">
         <div className="flex flex-col min-h-[50vh] justify-center items-center gap-4">
           <div className="flex flex-col gap-2">
-            <h1 className="font-lexend text-center text-5xl sm:text-6xl font-semibold">
+            <h1 className="font-lexend text-center text-4xl sm:text-6xl font-semibold">
               shadcn/ui cookie consent
             </h1>
 
@@ -20,20 +20,19 @@ export function Hero() {
             </p>
           </div>
          
-
-          <div className="flex bg-muted rounded-lg overflow-hidden">
+          <div className="flex bg-muted rounded-lg overflow-hidden w-full max-w-full sm:max-w-fit">
             <pre 
-              className="text-muted-foreground text-sm p-2 cursor-pointer"
+              className="text-muted-foreground text-sm p-2 cursor-pointer overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-border scrollbar-track-muted hover:scrollbar-thumb-muted-foreground/20"
               onClick={() => {
-                navigator.clipboard.writeText("npm i react-code-blocks");
+                navigator.clipboard.writeText("npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json");
               }}
             >
-              npm i react-code-blocks
+              npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json
             </pre>
             <button 
-              className="m-2"
+              className="m-2 flex-shrink-0"
               onClick={() => {
-                navigator.clipboard.writeText("npm i react-code-blocks");
+                navigator.clipboard.writeText("npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json");
               }}
             >
               <CopyIcon className="text-muted-foreground w-4 h-4" />
