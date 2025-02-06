@@ -97,3 +97,6 @@ git commit -m "feat: added new cookie consent variant"
 git push origin feature-minimal-variant
 ```
 6. **Open a Pull Request** - Go to original repo, click "New Pull Request", and select your branch.
+
+## Demo
+ - [Live Demo](https://shadcn-cookies.vercel.app)
