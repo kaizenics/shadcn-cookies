@@ -1,12 +1,13 @@
 {
   "name": "shadcn-cookies",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "registry:build": "shadcn build"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.6",
@@ -19,6 +20,7 @@
     "next-themes": "^0.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "shadcn": "^2.4.0-canary.0",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7"
   },
