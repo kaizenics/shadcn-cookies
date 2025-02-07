@@ -3,7 +3,6 @@
 import { Container } from "@/components/ui/container";
 import { CopyIcon } from "lucide-react";
 
-
 export function Hero() {
   return (
     <div className="border-b border-border">
@@ -15,31 +14,35 @@ export function Hero() {
             </h1>
 
             <p className="font-sans text-center text-lg">
-              Sleek and flexible cookie consent component, designed
-              with shadcn/ui
+              Sleek and flexible cookie consent component, designed with
+              shadcn/ui
             </p>
           </div>
-         
+
           <div className="flex bg-muted rounded-lg overflow-hidden w-full max-w-full sm:max-w-fit">
-            <pre 
+            <pre
               className="text-muted-foreground text-sm p-2 cursor-pointer overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-border scrollbar-track-muted hover:scrollbar-thumb-muted-foreground/20"
               onClick={() => {
-                navigator.clipboard.writeText("npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json");
+                navigator.clipboard.writeText(
+                  "npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json"
+                );
               }}
             >
-              npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json
+              npx shadcn@latest add
+              http://shadcn-cookies.vercel.app/r/cookie-consent.json
             </pre>
-            <button 
+            <button
               className="m-2 flex-shrink-0"
               onClick={() => {
-                navigator.clipboard.writeText("npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json");
+                navigator.clipboard.writeText(
+                  "npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json"
+                );
               }}
             >
               <CopyIcon className="text-muted-foreground w-4 h-4" />
             </button>
           </div>
         </div>
-
       </Container>
     </div>
   );

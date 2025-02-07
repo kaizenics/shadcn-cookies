@@ -121,7 +121,7 @@ export function CookieConsent({
           </Button>
           <Button
             onClick={decline}
-            className="w-full h-8 sm:h-9 rounded-full text-xs sm:text-sm"
+            className="w-full h-8 sm:h-9 text-xs sm:text-sm"
             variant="outline"
           >
             Decline
