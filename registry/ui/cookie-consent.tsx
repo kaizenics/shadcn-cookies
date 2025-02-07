@@ -73,7 +73,7 @@ export function CookieConsent({
               <br />
               <span className="text-xs">
                 By clicking
-                <span className="font-medium opacity-80 text-white"> Accept</span>, you
+                <span className="font-medium text-black dark:text-white"> Accept</span>, you
                 agree to our use of cookies.
               </span>
               <br />
@@ -121,7 +121,7 @@ export function CookieConsent({
           </Button>
           <Button
             onClick={decline}
-            className="w-full h-8 sm:h-9 rounded-full text-xs sm:text-sm"
+            className="w-full h-8 sm:h-9 text-xs sm:text-sm"
             variant="outline"
           >
             Decline
