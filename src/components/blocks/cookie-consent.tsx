@@ -73,7 +73,7 @@ export function CookieConsent({
               <br />
               <span className="text-xs">
                 By clicking
-                <span className="font-medium opacity-80 text-white"> Accept</span>, you
+                <span className="font-medium text-black dark:text-white"> Accept</span>, you
                 agree to our use of cookies.
               </span>
               <br />

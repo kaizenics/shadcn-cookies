@@ -131,7 +131,7 @@ export default function Page() {
                     For more information on how we use cookies, please see our cookie policy.
                     <br /><br />
                     <span className="text-xs">
-                      By clicking<span className="font-medium opacity-80 text-white"> Accept</span>,
+                      By clicking<span className="font-medium text-black dark:text-white"> Accept</span>,
                       you agree to our use of cookies.
                     </span>
                     <br />
