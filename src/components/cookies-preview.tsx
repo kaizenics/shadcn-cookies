@@ -5,8 +5,64 @@ import { Button } from "@/components/ui/button";
 import { CookieIcon, CopyIcon } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+interface PreviewSectionProps {
+  title: string;
+  description: string;
+  codeSnippet: string;
+  children: React.ReactNode;
+}
+
+const PreviewSection = ({ title, description, codeSnippet, children }: PreviewSectionProps) => (
+  <div className="py-10 flex flex-col justify-center items-center">
+    <div className="w-full md:w-2/3 lg:w-1/2">
+      <div className="flex flex-col gap-2 mb-6">
+        <h1 className="text-lexend text-2xl sm:text-3xl font-bold">{title}</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
+          {description}
+        </p>
+      </div>
+
+      <Tabs defaultValue="preview" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 mb-6">
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="preview">
+          <div className="flex justify-center border border-border rounded-md p-4 sm:p-10">
+            {children}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="code">
+          <div className="relative">
+            <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
+              <code className="font-mono language-tsx text-foreground block w-full">
+                <span className="text-muted-foreground whitespace-pre-wrap break-words">
+                  {codeSnippet}
+                </span>
+              </code>
+            </pre>
+            <Button
+              variant="ghost" 
+              size="sm"
+              className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
+              onClick={() => {
+                navigator.clipboard.writeText(codeSnippet);
+              }}
+            >
+              <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
+            </Button>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </div>
+  </div>
+);
+
 export function CookiesPreview() {
-  const codeSnippet1 = `import { CookieConsent } from "@/components/ui/cookie-consent"
+  const codeSnippets = {
+    default: `import { CookieConsent } from "@/components/ui/cookie-consent"
 
 export default function Page() {
   return (
@@ -20,9 +76,8 @@ export default function Page() {
       }}
     />
   )
-}`;
-
-  const codeSnippet2 = `import { CookieConsent } from "@/components/ui/cookie-consent"
+}`,
+    small: `import { CookieConsent } from "@/components/ui/cookie-consent"
 
 export default function Page() {
   return (
@@ -36,9 +91,8 @@ export default function Page() {
       }}
     />
   )
-}`;
-
-  const codeSnippet3 = `import { CookieConsent } from "@/components/ui/cookie-consent"
+}`,
+    minimal: `import { CookieConsent } from "@/components/ui/cookie-consent"
 
 export default function Page() {
   return (
@@ -52,264 +106,115 @@ export default function Page() {
       }}
     />
   )
-}`;
+}`
+  };
 
   return (
     <>
+    {/* Default */}
       <Container variant={"fullMobileConstrainedPadded"} className="border-x">
-        <div className="py-10 flex flex-col justify-center items-center">
-          <div className="md:w-1/2">
-            <div className="flex flex-col gap-2 mb-6">
-              <h1 className="text-lexend text-2xl font-bold">Default</h1>
-              <p className="text-sm text-muted-foreground">
-                The default variant is the most common and is used to display a
-                cookie consent banner.
-              </p>
+        <PreviewSection
+          title="Default"
+          description="The default variant is the most common and is used to display a cookie consent banner."
+          codeSnippet={codeSnippets.default}
+        >
+          <div className="w-full sm:max-w-md">
+            <div className="dark:bg-card bg-background rounded-md border border-border shadow-lg">
+              <div className="grid gap-2">
+                <div className="border-b border-border h-14 flex items-center justify-between p-4">
+                  <h1 className="text-base sm:text-lg font-medium">We use cookies</h1>
+                  <CookieIcon className="h-4 w-4 sm:h-[1.2rem] sm:w-[1.2rem]" />
+                </div>
+                <div className="p-4">
+                  <p className="text-xs sm:text-sm font-normal text-start text-muted-foreground">
+                    We use cookies to ensure you get the best experience on our website.
+                    For more information on how we use cookies, please see our cookie policy.
+                    <br /><br />
+                    <span className="text-xs">
+                      By clicking<span className="font-medium opacity-80 text-white"> Accept</span>,
+                      you agree to our use of cookies.
+                    </span>
+                    <br />
+                    <a href="#" className="text-xs underline">Learn more.</a>
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-2 p-4 py-5 border-t border-border dark:bg-background/20">
+                  <Button className="w-full">Accept</Button>
+                  <Button className="w-full" variant="secondary">Decline</Button>
+                </div>
+              </div>
             </div>
-            <Tabs defaultValue="preview">
-              <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-
-                <TabsTrigger value="code">Code</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="preview">
-                <div className="flex justify-center border border-border rounded-md py-10">
-                  <div className="w-full sm:max-w-md duration-700 transition-[opacity,transform] translate-y-0 opacity-100">
-                    <div className="dark:bg-card bg-background rounded-md m-3 border border-border shadow-lg">
-                      <div className="grid gap-2">
-                        <div className="border-b border-border h-14 flex items-center justify-between p-4">
-                          <h1 className="text-lg font-medium">
-                            We use cookies
-                          </h1>
-                          <CookieIcon className="h-[1.2rem] w-[1.2rem]" />
-                        </div>
-                        <div className="p-4">
-                          <p className="text-sm font-normal text-start">
-                            We use cookies to ensure you get the best experience
-                            on our website. For more information on how we use
-                            cookies, please see our cookie policy.
-                            <br />
-                            <br />
-                            <span className="text-xs">
-                              By clicking
-                              <span className="font-medium opacity-80">
-                                {" "}
-                                Accept
-                              </span>
-                              , you agree to our use of cookies.
-                            </span>
-                            <br />
-                            <a href="#" className="text-xs underline">
-                              Learn more.
-                            </a>
-                          </p>
-                        </div>
-                        <div className="flex gap-2 p-4 py-5 border-t border-border dark:bg-background/20">
-                          <Button className="w-full">Accept</Button>
-                          <Button className="w-full" variant="secondary">
-                            Decline
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="code">
-                <div className="relative">
-                  <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
-                    <code
-                      className="font-mono language-tsx text-foreground block w-full"
-                      data-language="tsx"
-                    >
-                      <span className="text-muted-foreground whitespace-pre-wrap break-words">
-                        {codeSnippet1}
-                      </span>
-                    </code>
-                  </pre>
-                  <Button
-                    variant="ghost" 
-                    size="sm"
-                    className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
-                    onClick={() => {
-                      navigator.clipboard.writeText(codeSnippet1);
-                    }}
-                  >
-                    <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
-                  </Button>
-                </div>
-              </TabsContent>
-            </Tabs>
           </div>
-        </div>
+        </PreviewSection>
       </Container>
 
+      {/* Small */}
       <div className="border-t border-border">
         <Container variant={"fullMobileConstrainedPadded"} className="border-x">
-          <div className="py-10 flex flex-col justify-center items-center">
-            <div className="md:w-1/2">
-              <div className="flex flex-col gap-2 mb-6">
-                <h1 className="text-lexend text-2xl font-bold">Small</h1>
-                <p className="text-sm text-muted-foreground">
-                  The small variant is a smaller version of the default variant
-                  and is used to display a cookie consent banner in a smaller
-                  container.
-                </p>
-              </div>
+          <PreviewSection
 
-              <Tabs defaultValue="preview">
-                <TabsList className="grid w-full grid-cols-2 mb-6">
-                  <TabsTrigger value="preview">Preview</TabsTrigger>
-
-                  <TabsTrigger value="code">Code</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="preview">
-                  <div className="flex justify-center border border-border rounded-md py-10">
-                    <div className="w-full sm:max-w-md duration-700 transition-[opacity,transform] translate-y-0 opacity-100">
-                      <div className="m-3 dark:bg-card bg-background border border-border rounded-lg">
-                        <div className="flex items-center justify-between p-3">
-                          <h1 className="text-lg font-medium">
-                            We use cookies
-                          </h1>
-                          <CookieIcon className="h-[1.2rem] w-[1.2rem]" />
-                        </div>
-                        <div className="p-3 -mt-2">
-                          <p className="text-sm text-left text-muted-foreground">
-                            We use cookies to ensure you get the best experience
-                            on our website. For more information on how we use
-                            cookies, please see our cookie policy.
-                          </p>
-                        </div>
-                        <div className="p-3 flex items-center gap-2 mt-2 border-t">
-                          <Button className="w-full h-9 rounded-full">
-                            Accept
-                          </Button>
-                          <Button
-                            className="w-full h-9 rounded-full"
-                            variant="outline"
-                          >
-                            Decline
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="code">
-                <div className="relative">
-                  <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
-                    <code
-                      className="font-mono language-tsx text-foreground block w-full"
-                      data-language="tsx"
-                    >
-                      <span className="text-muted-foreground whitespace-pre-wrap break-words">
-                        {codeSnippet2}
-                      </span>
-                    </code>
-                  </pre>
-                  <Button
-                    variant="ghost" 
-                    size="sm"
-                    className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
-                    onClick={() => {
-                      navigator.clipboard.writeText(codeSnippet2);
-                    }}
-                  >
-                    <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
+            title="Small"
+            description="The small variant is a more compact version with rounded buttons and simplified content."
+            codeSnippet={codeSnippets.small}
+          >
+            <div className="w-full sm:max-w-md">
+              <div className="dark:bg-card bg-background border border-border rounded-lg shadow-lg">
+                <div className="flex items-center justify-between p-3">
+                  <h1 className="text-base sm:text-lg font-medium">We use cookies</h1>
+                  <CookieIcon className="h-4 w-4 sm:h-[1.2rem] sm:w-[1.2rem]" />
+                </div>
+                <div className="p-3 -mt-2">
+                  <p className="text-xs sm:text-sm text-left text-muted-foreground">
+                    We use cookies to ensure you get the best experience on our website.
+                    For more information on how we use cookies, please see our cookie policy.
+                  </p>
+                </div>
+                <div className="p-3 flex flex-col sm:flex-row items-center gap-2 mt-2 border-t">
+                  <Button className="w-full h-8 sm:h-9 text-xs sm:text-sm">
+                    Accept
+                  </Button>
+                  <Button className="w-full h-8 sm:h-9 text-xs sm:text-sm" variant="outline">
+                    Decline
                   </Button>
                 </div>
-                </TabsContent>
-              </Tabs>
+              </div>
             </div>
-          </div>
+          </PreviewSection>
         </Container>
       </div>
 
+      {/* Minimal */}
       <div className="border-t border-border">
         <Container variant={"fullMobileConstrainedPadded"} className="border-x">
-          <div className="py-10 flex flex-col justify-center items-center">
-            <div className="md:w-1/2">
-              <div className="flex flex-col gap-2 mb-6">
-                <h1 className="text-lexend text-2xl font-bold">Minimal</h1>
-                <p className="text-sm text-muted-foreground">
-                  The minimal variant is a minimal version of the default
-                  variant and is used to display a cookie consent banner in a
-                  minimal container.
-                </p>
-              </div>
-              <Tabs defaultValue="preview">
-                <TabsList className="grid w-full grid-cols-2 mb-6">
-                  <TabsTrigger value="preview">Preview</TabsTrigger>
-
-                  <TabsTrigger value="code">Code</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="preview">
-                  <div className="flex justify-center border border-border rounded-md py-10">
-                    <div className="m-3 dark:bg-card bg-background border border-border rounded-lg shadow-lg">
-                      <div className="p-3 flex items-center justify-between border-b border-border">
-                        <div className="flex items-center gap-2">
-                          <CookieIcon className="h-4 w-4" />
-                          <span className="text-sm font-medium">
-                            Cookie Notice
-                          </span>
-                        </div>
-                      </div>
-                      <div className="p-3">
-                        <p className="text-xs text-muted-foreground">
-                          We use cookies to enhance your browsing experience.
-                        </p>
-                        <div className="flex items-center gap-2 mt-3">
-                          <Button
-                            size="sm"
-                            className="h-7 text-xs px-3 rounded-full"
-                          >
-                            Accept
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            className="h-7 text-xs px-3 rounded-full"
-                          >
-                            Decline
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
+          <PreviewSection
+            title="Minimal"
+            description="The minimal variant provides a simple and unobtrusive notification."
+            codeSnippet={codeSnippets.minimal}
+          >
+            <div className="w-full sm:max-w-[300px]">
+              <div className="dark:bg-card bg-background border border-border rounded-lg shadow-lg">
+                <div className="p-3 flex items-center justify-between border-b border-border">
+                  <div className="flex items-center gap-2">
+                    <CookieIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="text-xs sm:text-sm font-medium">Cookie Notice</span>
                   </div>
-                </TabsContent>
-
-                <TabsContent value="code">
-                <div className="relative">
-                  <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
-                    <code
-                      className="font-mono language-tsx text-foreground block w-full"
-                      data-language="tsx"
-                    >
-                      <span className="text-muted-foreground whitespace-pre-wrap break-words">
-                        {codeSnippet3}
-                      </span>
-                    </code>
-                  </pre>
-                  <Button
-                    variant="ghost" 
-                    size="sm"
-                    className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
-                    onClick={() => {
-                      navigator.clipboard.writeText(codeSnippet3);
-                    }}
-                  >
-                    <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />
-                  </Button>
                 </div>
-                </TabsContent>
-              </Tabs>
+                <div className="p-3">
+                  <p className="text-[11px] sm:text-xs text-muted-foreground">
+                    We use cookies to enhance your browsing experience.
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center gap-2 mt-3">
+                    <Button size="sm" className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3">
+                      Accept
+                    </Button>
+                    <Button size="sm" variant="ghost" className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3">
+                      Decline
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </PreviewSection>
         </Container>
       </div>
     </>

@@ -65,7 +65,7 @@ export function CookieConsent({
             <CookieIcon className="h-4 w-4 sm:h-[1.2rem] sm:w-[1.2rem]" />
           </div>
           <div className="p-3 sm:p-4">
-            <p className="text-xs sm:text-sm font-normal text-start">
+            <p className="text-xs sm:text-sm font-normal text-start text-muted-foreground">
               We use cookies to ensure you get the best experience on our
               website. For more information on how we use cookies, please see
               our cookie policy.
@@ -73,7 +73,7 @@ export function CookieConsent({
               <br />
               <span className="text-xs">
                 By clicking
-                <span className="font-medium opacity-80"> Accept</span>, you
+                <span className="font-medium opacity-80 text-white"> Accept</span>, you
                 agree to our use of cookies.
               </span>
               <br />
@@ -103,7 +103,7 @@ export function CookieConsent({
         hide && "hidden"
       )}
     >
-      <div className="m-0 sm:m-3 dark:bg-card bg-background border border-border rounded-lg">
+      <div className="m-0 sm:m-3 dark:bg-card bg-background border border-border rounded-lg shadow-lg">
         <div className="flex items-center justify-between p-3">
           <h1 className="text-base sm:text-lg font-medium">We use cookies</h1>
           <CookieIcon className="h-4 w-4 sm:h-[1.2rem] sm:w-[1.2rem]" />
@@ -116,7 +116,7 @@ export function CookieConsent({
           </p>
         </div>
         <div className="p-3 flex flex-col sm:flex-row items-center gap-2 mt-2 border-t">
-          <Button onClick={accept} className="w-full h-8 sm:h-9 rounded-full text-xs sm:text-sm">
+          <Button onClick={accept} className="w-full h-8 sm:h-9 text-xs sm:text-sm">
             Accept
           </Button>
           <Button
@@ -155,7 +155,7 @@ export function CookieConsent({
               <Button
                 onClick={accept}
                 size="sm"
-                className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3 rounded-full"
+                className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3"
               >
                 Accept
               </Button>
@@ -163,7 +163,7 @@ export function CookieConsent({
                 onClick={decline}
                 size="sm"
                 variant="ghost"
-                className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3 rounded-full"
+                className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3"
               >
                 Decline
               </Button>
