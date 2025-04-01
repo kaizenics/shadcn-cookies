@@ -4,6 +4,8 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { CookieIcon, CopyIcon } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CodeHighlighter } from "@/components/ui/code-highlighter";
+import { toast } from "sonner";
 
 interface PreviewSectionProps {
   title: string;
@@ -36,19 +38,16 @@ const PreviewSection = ({ title, description, codeSnippet, children }: PreviewSe
 
         <TabsContent value="code">
           <div className="relative">
-            <pre className="p-2 sm:p-4 rounded-lg bg-muted overflow-x-auto text-[11px] xs:text-xs sm:text-sm">
-              <code className="font-mono language-tsx text-foreground block w-full">
-                <span className="text-muted-foreground whitespace-pre-wrap break-words">
-                  {codeSnippet}
-                </span>
-              </code>
-            </pre>
+            <div className="rounded-lg overflow-x-auto">
+              <CodeHighlighter code={codeSnippet} />
+            </div>
             <Button
               variant="ghost" 
               size="sm"
               className="absolute top-1 right-1 xs:top-2 xs:right-2 sm:top-4 sm:right-4 p-1 xs:p-2"
               onClick={() => {
                 navigator.clipboard.writeText(codeSnippet);
+                toast.success("Copied to clipboard!");
               }}
             >
               <CopyIcon className="h-3 w-3 xs:h-3.5 xs:w-3.5 sm:h-4 sm:w-4" />

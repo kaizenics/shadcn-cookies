@@ -70,3 +70,25 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .shiki {
+    @apply bg-muted !important;
+    @apply rounded-lg;
+  }
+  
+  .shiki code {
+    @apply grid;
+    @apply min-w-full;
+  }
+
+  .shiki .line {
+    @apply px-4;
+    @apply py-0.5;
+  }
+
+  .shiki .line.focus {
+    @apply bg-accent;
+    @apply shadow-[inset_2px_0] shadow-blue-400;
+  }
+}
