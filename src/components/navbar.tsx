@@ -6,7 +6,7 @@ import { GithubIcon } from "lucide-react"
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
       <Container variant={"fullMobileConstrainedPadded"} className="border-x">
         <div className="flex h-14 items-center justify-between">
           <div className="flex">
@@ -17,7 +17,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant={"outline"}>
+            <Button variant={"outline-solid"}>
               <Link href="https://github.com/kaizenics/shadcn-cookies" className="flex items-center gap-2">
                 <GithubIcon className="w-4 h-4" />
                 Star on GitHub
