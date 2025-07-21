@@ -17,7 +17,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant={"outline-solid"}>
+            <Button variant={"outline"} asChild>
               <Link href="https://github.com/kaizenics/shadcn-cookies" className="flex items-center gap-2">
                 <GithubIcon className="w-4 h-4" />
                 Star on GitHub
