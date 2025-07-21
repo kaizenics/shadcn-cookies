@@ -32,7 +32,7 @@ export function Hero() {
               http://shadcn-cookies.vercel.app/r/cookie-consent.json
             </pre>
             <button
-              className="m-2 flex-shrink-0"
+              className="m-2 shrink-0"
               onClick={() => {
                 navigator.clipboard.writeText(
                   "npx shadcn@latest add http://shadcn-cookies.vercel.app/r/cookie-consent.json"
