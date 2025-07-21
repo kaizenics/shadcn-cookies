@@ -11,7 +11,7 @@
         "description": "A cookie consent component.",
         "files": [
           {
-            "path": "registry/ui/cookie-consent.tsx",
+            "path": "registry/cookie-consent.tsx",
             "type": "registry:component"
           }
 
