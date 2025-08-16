@@ -5,16 +5,19 @@ import { Button } from "@/components/ui/button";
 import { CookieIcon, CopyIcon } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeHighlighter } from "@/components/ui/code-highlighter";
+import { CookieConsent } from "@/components/blocks/cookie-consent";
 import { toast } from "sonner";
+import { useState } from "react";
 
 interface PreviewSectionProps {
   title: string;
   description: string;
   codeSnippet: string;
   children: React.ReactNode;
+  onDemo?: () => void;
 }
 
-const PreviewSection = ({ title, description, codeSnippet, children }: PreviewSectionProps) => (
+const PreviewSection = ({ title, description, codeSnippet, children, onDemo }: PreviewSectionProps) => (
   <div className="py-10 flex flex-col justify-center items-center">
     <div className="w-full md:w-2/3 lg:w-1/2">
       <div className="flex flex-col gap-2 mb-6">
@@ -55,12 +58,21 @@ const PreviewSection = ({ title, description, codeSnippet, children }: PreviewSe
           </div>
         </TabsContent>
       </Tabs>
+      {onDemo && (
+        <Button variant="outline" className="w-full mt-4" onClick={onDemo}>
+          Demo
+        </Button>
+      )}
     </div>
   </div>
 );
 
 export function CookiesPreview() {
-  const codeSnippets = {
+  const [demo1, setDemo1] = useState(false);
+  const [demo2, setDemo2] = useState(false);
+  const [demo3, setDemo3] = useState(false);
+
+const codeSnippets = {
     default: `import { CookieConsent } from "@/components/ui/cookie-consent"
 
 export default function Page() {
@@ -116,6 +128,7 @@ export default function Page() {
           title="Default"
           description="The default variant is the most common and is used to display a cookie consent banner."
           codeSnippet={codeSnippets.default}
+          onDemo={() => setDemo1(true)}
         >
           <div className="w-full sm:max-w-md">
             <div className="dark:bg-card bg-background rounded-md border border-border shadow-lg">
@@ -137,9 +150,9 @@ export default function Page() {
                     <a href="#" className="text-xs underline">Learn more.</a>
                   </p>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-2 p-4 py-5 border-t border-border dark:bg-background/20">
-                  <Button className="w-full">Accept</Button>
-                  <Button className="w-full" variant="secondary">Decline</Button>
+                <div className="grid grid-cols-2 items-center gap-2 p-4 py-5 border-t border-border dark:bg-background/20">
+                  <Button variant="default" className="w-full">Accept</Button>
+                  <Button variant="outline" className="w-full">Decline</Button>
                 </div>
               </div>
             </div>
@@ -151,10 +164,10 @@ export default function Page() {
       <div className="border-t border-border">
         <Container variant={"fullMobileConstrainedPadded"} className="border-x">
           <PreviewSection
-
             title="Small"
             description="The small variant is a more compact version with rounded buttons and simplified content."
             codeSnippet={codeSnippets.small}
+            onDemo={() => setDemo2(true)}
           >
             <div className="w-full sm:max-w-md">
               <div className="dark:bg-card bg-background border border-border rounded-lg shadow-lg">
@@ -168,11 +181,11 @@ export default function Page() {
                     For more information on how we use cookies, please see our cookie policy.
                   </p>
                 </div>
-                <div className="p-3 flex flex-col sm:flex-row items-center gap-2 mt-2 border-t">
-                  <Button className="w-full h-8 sm:h-9 text-xs sm:text-sm">
+                <div className="grid grid-cols-2 items-center gap-2 p-3 mt-2 border-t">
+                  <Button variant="default" className="w-full">
                     Accept
                   </Button>
-                  <Button className="w-full h-8 sm:h-9 text-xs sm:text-sm" variant="outline">
+                  <Button variant="outline" className="w-full">
                     Decline
                   </Button>
                 </div>
@@ -189,6 +202,7 @@ export default function Page() {
             title="Minimal"
             description="The minimal variant provides a simple and unobtrusive notification."
             codeSnippet={codeSnippets.minimal}
+            onDemo={() => setDemo3(true)}
           >
             <div className="w-full sm:max-w-[300px]">
               <div className="dark:bg-card bg-background border border-border rounded-lg shadow-lg">
@@ -202,11 +216,11 @@ export default function Page() {
                   <p className="text-[11px] sm:text-xs text-muted-foreground">
                     We use cookies to enhance your browsing experience.
                   </p>
-                  <div className="flex flex-col sm:flex-row items-center gap-2 mt-3">
-                    <Button size="sm" className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3">
+                  <div className="grid grid-cols-2 items-center gap-2 mt-3">
+                    <Button variant="default" className="w-full">
                       Accept
                     </Button>
-                    <Button size="sm" variant="ghost" className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3">
+                    <Button variant="ghost" className="w-full">
                       Decline
                     </Button>
                   </div>
@@ -216,6 +230,32 @@ export default function Page() {
           </PreviewSection>
         </Container>
       </div>
+
+      {/* Demo Cookie Consents */}
+      {demo1 && (
+        <CookieConsent
+          variant="default"
+          mode={true}
+          onAcceptCallback={() => setDemo1(false)}
+          onDeclineCallback={() => setDemo1(false)}
+        />
+      )}
+      {demo2 && (
+        <CookieConsent
+          variant="small"
+          mode={true}
+          onAcceptCallback={() => setDemo2(false)}
+          onDeclineCallback={() => setDemo2(false)}
+        />
+      )}
+      {demo3 && (
+        <CookieConsent
+          variant="minimal"
+          mode={true}
+          onAcceptCallback={() => setDemo3(false)}
+          onDeclineCallback={() => setDemo3(false)}
+        />
+      )}
     </>
   );
 }
