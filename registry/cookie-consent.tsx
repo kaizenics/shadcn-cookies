@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 export function CookieConsent({
   variant = "default",
   mode = false,
-  onAcceptCallback = () => {},
-  onDeclineCallback = () => {},
+  onAcceptCallback = () => { },
+  onDeclineCallback = () => { },
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [hide, setHide] = useState(false);
@@ -72,8 +72,8 @@ export function CookieConsent({
               <br />
               <br />
               <span className="text-xs">
-                By clicking
-                <span className="font-medium text-black dark:text-white"> Accept</span>, you
+                By clicking{" "}
+                <span className="font-medium text-black dark:text-white">Accept</span>, you
                 agree to our use of cookies.
               </span>
               <br />
@@ -82,11 +82,11 @@ export function CookieConsent({
               </a>
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-2 p-3 sm:p-4 sm:py-5 border-t border-border dark:bg-background/20">
-            <Button onClick={accept} className="w-full">
+          <div className="grid grid-cols-2 items-center gap-2 p-3 sm:p-4 sm:py-5 border-t border-border dark:bg-background/20">
+            <Button onClick={accept} variant="default" className="w-full">
               Accept
             </Button>
-            <Button onClick={decline} className="w-full" variant="secondary">
+            <Button onClick={decline} variant="outline" className="w-full">
               Decline
             </Button>
           </div>
@@ -96,7 +96,7 @@ export function CookieConsent({
   ) : variant === "small" ? (
     <div
       className={cn(
-        "fixed z-200 bottom-0 left-0 right-0 p-4 sm:p-0 sm:left-4 sm:bottom-4 w-full sm:max-w-md duration-700",
+        "fixed z-200 bottom-0 left-0 right-0 p-4   sm:p-0 sm:left-4 sm:bottom-4 w-full sm:max-w-md duration-700",
         !isOpen
           ? "transition-[opacity,transform] translate-y-8 opacity-0"
           : "transition-[opacity,transform] translate-y-0 opacity-100",
@@ -115,13 +115,13 @@ export function CookieConsent({
             policy.
           </p>
         </div>
-        <div className="p-3 flex flex-col sm:flex-row items-center gap-2 mt-2 border-t">
-          <Button onClick={accept} className="w-full h-8 sm:h-9 text-xs sm:text-sm">
+        <div className="grid grid-cols-2 items-center gap-2 p-3 mt-2 border-t">
+          <Button onClick={accept} className="w-full">
             Accept
           </Button>
           <Button
             onClick={decline}
-            className="w-full h-8 sm:h-9 text-xs sm:text-sm"
+            className="w-full"
             variant="outline"
           >
             Decline
@@ -151,19 +151,18 @@ export function CookieConsent({
             <p className="text-[11px] sm:text-xs text-muted-foreground">
               We use cookies to enhance your browsing experience.
             </p>
-            <div className="flex flex-col sm:flex-row items-center gap-2 mt-3">
+            <div className="grid grid-cols-2 items-center gap-2 mt-3">
               <Button
                 onClick={accept}
-                size="sm"
-                className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3"
+                variant="default"
+                className="w-full"
               >
                 Accept
               </Button>
               <Button
                 onClick={decline}
-                size="sm"
                 variant="ghost"
-                className="w-full h-6 sm:h-7 text-[11px] sm:text-xs px-2 sm:px-3"
+                className="w-full"
               >
                 Decline
               </Button>
