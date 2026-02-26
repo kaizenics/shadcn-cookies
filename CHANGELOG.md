@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/kaizenics/shadcn-cookies/compare/v1.3.0...v1.4.0) (2026-02-26)
+
+
+### Features
+
+* enhance metadata and add Open Graph support for improved SEO ([5b793d5](https://github.com/kaizenics/shadcn-cookies/commit/5b793d5173033e14ca231e0eeddd164e4cf4c58f))
+
 # [1.3.0](https://github.com/kaizenics/shadcn-cookies/compare/v1.2.0...v1.3.0) (2025-10-30)
 
 
